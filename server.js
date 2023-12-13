@@ -13,6 +13,13 @@ const customErrorHandler = require("./Middlewares/Errors/customErrorHandler")
 dotenv.config({
     path:  './.env'
 });
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true,
+  };
+
+app.use(cors(corsOptions));
+
 
 
 connectDatabase();
@@ -21,7 +28,6 @@ connectDatabase();
 const app = express() ;
 
 app.use(express.json())
-app.use(cors())
 
 app.use("/",IndexRoute)
 
